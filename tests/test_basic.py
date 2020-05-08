@@ -12,7 +12,7 @@ def test_config():
 def test_hello(client):
     # GIVEN
     # WHEN
-    response = client.post("/convert", json={"text": "Hello, World!"})
+    response = client.post("/", json={"text": "Hello, World!"})
     # THEN
     assert response.data == b"Hello, World!"
 
@@ -20,6 +20,14 @@ def test_hello(client):
 def test_bad_request(client):
     # GIVEN
     # WHEN
-    response = client.post("/convert", json={"not_text": "hello!"})
+    response = client.post("/", json={"not_text": "hello!"})
     # THEN
     assert b"Bad Request" in response.data
+
+
+def test_get_basic(client):
+    # GIVEN
+    # WHEN
+    response = client.get("/")
+    # THEN
+    assert b"Test successful!"

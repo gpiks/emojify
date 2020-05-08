@@ -29,8 +29,10 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    @app.route("/convert", methods=["GET", "POST"])
+    @app.route("/", methods=["GET", "POST"])
     def process_text():
+        if request.method == 'GET':
+            return "Successful test!" 
         try:
             text = request.get_json()["text"]
         except KeyError:

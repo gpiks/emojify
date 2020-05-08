@@ -1,0 +1,20 @@
+# Python core
+__pycache__/
+*.pyc
+
+# build
+build/
+dist/
+*.egg-info
+pip-wheel-metadata
+
+# test
+.coverage
+coverage.xml
+.pytest_cache/
+
+# nox
+.nox/
+
+# venv
+venv/

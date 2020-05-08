@@ -1,4 +1,3 @@
-pytest
-black
-pylint
-flake8
+.
+flask
+gunicorn

@@ -31,8 +31,8 @@ def create_app(test_config=None):
 
     @app.route("/", methods=["GET", "POST"])
     def process_text():
-        if request.method == 'GET':
-            return "Successful test!" 
+        if request.method == "GET":
+            return "Successful test!"
         try:
             text = request.get_json()["text"]
         except KeyError:

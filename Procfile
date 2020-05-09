@@ -1,2 +1,2 @@
-web: gunicorn -w 1 -b 0.0.0.0 emojify.__main__:app
+web: gunicorn -w 4 -b 0.0.0.0:$PORT emojify.__main__:app
 

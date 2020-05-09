@@ -14,7 +14,7 @@ def test_hello(client):
     # WHEN
     response = client.post("/", json={"text": "Hello, World!"})
     # THEN
-    assert response.data == b"Hello, World!"
+    assert response.data == b"['Hello', 'World']"
 
 
 def test_bad_request(client):

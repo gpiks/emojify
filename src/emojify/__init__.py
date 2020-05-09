@@ -7,6 +7,8 @@ from flask import Flask
 from flask import abort
 from flask import request
 
+from .text_processor import remove_stop_words
+
 
 def create_app(test_config=None):
     """Create and configure an instance of the Flask application."""
@@ -37,6 +39,6 @@ def create_app(test_config=None):
             text = request.get_json()["text"]
         except KeyError:
             abort(400)
-        return text
+        return str(remove_stop_words(text))
 
     return app

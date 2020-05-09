@@ -8,11 +8,17 @@ def test_config():
     assert not create_app().testing
     assert create_app({"TESTING": True}).testing
 
-
-def test_hello(client):
+@pytest.mark.parametrize(
+    "endpoint, payload",
+    [
+        ("/", {"json": {"text": "Hello, World!"}}),
+        ("/slack", {"query_string": {"text": "Hello, World!"}})
+    ]
+)
+def test_hello(endpoint, payload, client):
     # GIVEN
     # WHEN
-    response = client.post("/", json={"text": "Hello, World!"})
+    response = client.post(endpoint, **payload)
     # THEN
     assert response.data == b"['Hello', 'World']"
 

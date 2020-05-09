@@ -1,6 +1,6 @@
 from setuptools import setup
 
-install_requires = ["flask", "nltk"]
+install_requires = ["flask", "nltk", "requests"]
 test_requires = ["pytest", "pytest-cov"]
 lint_requires = ["black", "flake8", "pylint"]
 docs_requires = []

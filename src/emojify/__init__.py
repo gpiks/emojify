@@ -6,6 +6,9 @@ import os
 from flask import Flask
 from flask import abort
 from flask import request
+from flask import jsonify
+
+import requests
 
 from .text_processor import remove_stop_words
 
@@ -31,8 +34,19 @@ def create_app(test_config=None):
     except OSError:
         pass
 
+    @app.route("/slack", methods=["POST"])
+    def process_text_from_slack():
+        user = request.form["user_name"]
+        text = request.form["text"]
+
+        process_text = " ".join(remove_stop_words(text))
+        message = f"{user}: {process_text}"
+
+        return jsonify(text=message, response_type="in_channel")
+
     @app.route("/", methods=["GET", "POST"])
     def process_text():
+        print(request.get_data())
         if request.method == "GET":
             return "Successful test!"
         try:

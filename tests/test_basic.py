@@ -30,4 +30,4 @@ def test_get_basic(client):
     # WHEN
     response = client.get("/")
     # THEN
-    assert b"Test successful!"
+    assert response.data == b"Successful test!"
